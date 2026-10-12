@@ -1,0 +1,14 @@
+#!/bin/sh
+PRG="$0"
+while [ -h "$PRG" ]; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG=`dirname "$PRG"`/"$link"
+  fi
+done
+DIR=`dirname "$PRG"`
+export MAVEN_HOME="$DIR/.mvn/apache-maven-3.9.6"
+exec "$MAVEN_HOME/bin/mvn" "$@"

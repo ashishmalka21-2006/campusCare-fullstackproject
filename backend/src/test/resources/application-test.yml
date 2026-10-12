@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:campuscare_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+
+app:
+  jwt:
+    secret: 9a7f8d6e5c4b3a210fedcba9876543210123456789abcdef0123456789abcdef
+    expiration-ms: 3600000
+  cors:
+    allowed-origins: "*"
+  upload:
+    dir: ./target/test-uploads
+  ai:
+    api-key: ""
