@@ -7,8 +7,8 @@ spring:
   application:
     name: campuscare-backend
   datasource:
-    url: jdbc:mysql://localhost:3306/campuscare?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: ${DB_USERNAME:root}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:campuscare}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:${DB_USER:root}}
     password: ${DB_PASSWORD:varun123}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
