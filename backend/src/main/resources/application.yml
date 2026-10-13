@@ -24,7 +24,7 @@ app:
     secret: ${JWT_SECRET:9a7f8d6e5c4b3a210fedcba9876543210123456789abcdef0123456789abcdef}
     expiration-ms: 86400000 # 24 hours
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173}
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,https://*.vercel.app,*}
   upload:
     dir: ${UPLOAD_DIR:./uploads}
   ai:
