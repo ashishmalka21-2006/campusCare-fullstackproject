@@ -55,5 +55,9 @@ dist/
 *.sln
 *.sw?
 
-# Uploads
+# Uploads & Data
 uploads/
+data/
+*.mv.db
+backend/data/
+backend/uploads/

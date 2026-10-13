@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
   servlet:
     context-path: /
 
@@ -7,18 +7,13 @@ spring:
   application:
     name: campuscare-backend
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:campuscare}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true}
-    username: ${DB_USERNAME:${DB_USER:root}}
-    password: ${DB_PASSWORD:varun123}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${SPRING_DATASOURCE_URL:${DATABASE_URL:jdbc:h2:file:./data/campuscare;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL}}
+    username: ${SPRING_DATASOURCE_USERNAME:${DB_USERNAME:${DB_USER:sa}}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DB_PASSWORD:}}
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: false
-    properties:
-      hibernate:
-        format_sql: false
-        dialect: org.hibernate.dialect.MySQLDialect
   servlet:
     multipart:
       max-file-size: 5MB

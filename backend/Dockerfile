@@ -8,9 +8,11 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-RUN addgroup -S campuscare && adduser -S campuscare -G campuscare
+RUN addgroup -S campuscare && adduser -S campuscare -G campuscare \
+    && mkdir -p /app/data /app/uploads \
+    && chown -R campuscare:campuscare /app
 USER campuscare
-COPY --from=builder /app/target/campuscare-backend-1.0.0.jar app.jar
+COPY --from=builder --chown=campuscare:campuscare /app/target/campuscare-backend-1.0.0.jar app.jar
 ENV PORT=8080
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
